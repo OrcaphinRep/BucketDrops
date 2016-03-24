@@ -11,6 +11,11 @@ import android.widget.DatePicker;
 import android.widget.EditText;
 import android.widget.ImageButton;
 
+import com.orcaphin.bucketdrops.beans.Drop;
+
+import io.realm.Realm;
+import io.realm.RealmConfiguration;
+
 public class DialogAdd extends DialogFragment
 {
     private EditText mInputWhat;
@@ -23,9 +28,31 @@ public class DialogAdd extends DialogFragment
         @Override
         public void onClick(View v)
         {
+            switch (v.getId())
+            {
+                case R.id.btn_add_it:
+                    addAction();
+                    break;
+            }
             dismiss();
         }
     };
+
+    private void addAction()
+    {
+        String what=mInputWhat.getText().toString();
+        long now=System.currentTimeMillis();
+        RealmConfiguration configuration=new RealmConfiguration.Builder(getActivity()).build();
+        Realm.setDefaultConfiguration(configuration);
+        Realm realm=Realm.getDefaultInstance();
+        Drop drop=new Drop(what,now,0,false);
+        realm.beginTransaction();
+        realm.copyToRealm(drop);
+        realm.commitTransaction();
+        realm.close();
+
+
+    }
 
     @Nullable
     @Override
@@ -45,5 +72,6 @@ public class DialogAdd extends DialogFragment
         
         
         mBtnClose.setOnClickListener(mBtnClickListener);
+        mBtnAdd.setOnClickListener(mBtnClickListener);
     }
 }
