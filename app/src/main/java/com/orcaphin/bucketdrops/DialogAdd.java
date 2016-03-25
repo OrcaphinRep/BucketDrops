@@ -45,9 +45,9 @@ public class DialogAdd extends DialogFragment
         RealmConfiguration configuration=new RealmConfiguration.Builder(getActivity()).build();
         Realm.setDefaultConfiguration(configuration);
         Realm realm=Realm.getDefaultInstance();
-        Drop drop=new Drop(what,now,0,false);
+        Drop Drop =new Drop(what,now,0,false);
         realm.beginTransaction();
-        realm.copyToRealm(drop);
+        realm.copyToRealm(Drop);
         realm.commitTransaction();
         realm.close();
 

@@ -40,8 +40,8 @@ public class AdapterDrops extends RecyclerView.Adapter<AdapterDrops.DropHolder>
     @Override
     public void onBindViewHolder(DropHolder holder, int position)
     {
-        Drop drop=mResults.get(position);
-        holder.mWhat.setText(drop.getWhat());
+        Drop Drop =mResults.get(position);
+        holder.mWhat.setText(Drop.getWhat());
 
     }
 
