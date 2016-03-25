@@ -19,5 +19,15 @@
 
         />
 
-    <include layout="@layout/empty_drops"/>
+    <com.orcaphin.bucketdrops.widgets.BucketRecyclerView
+        android:id="@+id/rv_drop"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_below="@id/toolbar"
+        />
+
+
+    <include
+        android:id="@+id/empty_drops"
+        layout="@layout/empty_drops"/>
 </RelativeLayout>
