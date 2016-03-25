@@ -37,7 +37,7 @@ public class DialogAdd extends DialogFragment
             dismiss();
         }
     };
-
+//Storing the data in the real
     private void addAction()
     {
         String what=mInputWhat.getText().toString();
